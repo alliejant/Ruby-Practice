@@ -1,5 +1,5 @@
 class House < ApplicationRecord
-    attr_accessor: :address
+    attr_accessor :address
     validates :address, presence: true
 
     def initialize(address)

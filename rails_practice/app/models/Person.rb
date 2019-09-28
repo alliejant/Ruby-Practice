@@ -1,5 +1,5 @@
 class Person < ApplicationRecord
-    attr_accessor: :name, :house_id
+    attr_accessor :name, :house_id
     validates :name, presence: true
 
     def initialize(name, house_id)

@@ -74,3 +74,23 @@ Migrating to AddNotNullConstraintToAddressInHouses (20190928020112)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mHouse Create (4.2ms)[0m  [1m[32mINSERT INTO "houses" DEFAULT VALUES RETURNING "id"[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHouse Create (7.2ms)[0m  [1m[32mINSERT INTO "houses" ("address") VALUES ($1) RETURNING "id"[0m  [["address", "1234 apple lane"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHouse Create (0.2ms)[0m  [1m[32mINSERT INTO "houses" ("address") VALUES ($1) RETURNING "id"[0m  [["address", "1234 orange lane"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+  [1m[36mHouse Load (0.7ms)[0m  [1m[34mSELECT "houses".* FROM "houses" ORDER BY address DESC[0m
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT "houses".* FROM "houses" ORDER BY address DESC[0m
+  [1m[36mHouse Load (0.8ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE (address = '1234 orange lane')[0m
+  [1m[35m (9.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "houses" WHERE (address = '1234 orange lane')[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "houses" WHERE (address = NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "houses" WHERE (address = 'null')[0m
+  [1m[36mPerson Load (40.7ms)[0m  [1m[34mSELECT "people".* FROM "people"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Create (0.6ms)[0m  [1m[32mINSERT INTO "people" ("name", "house_id") VALUES ($1, $2) RETURNING "id"[0m  [["name", "Hector"], ["house_id", 4]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHouse Load (0.5ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]

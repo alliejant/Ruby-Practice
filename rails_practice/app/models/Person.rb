@@ -2,9 +2,9 @@ class Person < ApplicationRecord
     validates :name, presence: true
 
     belongs_to(
-        :houses,
+        :house,
         class_name: 'House',
-        foregin_key: :house_id,
+        foreign_key: :house_id,
         primary_key: :id
     )
 end

@@ -4,7 +4,7 @@ class House < ApplicationRecord
     has_many(
         :residents,
         class_name: 'Person',
-        foregin_key: :house_id,
+        foreign_key: :house_id,
         primary_key: :id
     )
 end
